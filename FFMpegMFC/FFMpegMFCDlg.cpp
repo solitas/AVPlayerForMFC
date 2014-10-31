@@ -6,7 +6,7 @@
 #include "FFMpegMFC.h"
 #include "FFMpegMFCDlg.h"
 #include "afxdialogex.h"
-#include "AVPlayer.h"
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -165,7 +165,6 @@ void CFFMpegMFCDlg::OnBnClickedButtonOpen()
 	{
 		CString filePath = dlg.GetPathName();
 		const char* file_name = ((LPCSTR)filePath);
-		AVPlayer player;
-		player.play_video(file_name);
+		m_player.play_video(file_name);
 	}
 }

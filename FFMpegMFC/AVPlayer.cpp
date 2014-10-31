@@ -10,6 +10,7 @@ AVPlayer::AVPlayer()
 , audio_stream_index(0)
 , bRun(false)
 {
+	
 }
 
 
@@ -25,12 +26,8 @@ AVPlayer::~AVPlayer()
 
 bool AVPlayer::play_video(const char* resourceName)
 {
-	
-
 	av_register_all();
-
-	AVFormatContext* pFormatCtx = NULL;
-
+	
 	if (avformat_open_input(&pFormatCtx, resourceName, NULL, NULL) < 0)
 	{
 		TRACE("format context open error");
@@ -106,7 +103,19 @@ void AVPlayer::decode_proc()
 			}
 		}
 
-		bRun = false;
+		stop_video();
 	}
+}
+
+bool AVPlayer::stop_video()
+{
+	bRun = false;
+
+	if (pFormatCtx)
+	{
+		avformat_close_input(&pFormatCtx);
+	}
+
+	return true;
 }
 

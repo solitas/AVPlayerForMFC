@@ -9,6 +9,7 @@ public:
 	int audio_stream_index;
 
 	bool play_video(const char* resourceName);
+	bool stop_video();
 
 private:
 	bool bRun;

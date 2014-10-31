@@ -4,7 +4,7 @@
 
 #pragma once
 #include "afxwin.h"
-
+#include "AVPlayer.h"
 
 // CFFMpegMFCDlg 대화 상자
 class CFFMpegMFCDlg : public CDialogEx
@@ -33,4 +33,6 @@ protected:
 public:
 	CStatic m_picCtrl;
 	afx_msg void OnBnClickedButtonOpen();
+
+	AVPlayer m_player;
 };
