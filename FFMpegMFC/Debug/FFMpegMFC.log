@@ -1,11 +1,8 @@
-﻿빌드 시작: 10/31/2014 10:49:55 PM
+﻿빌드 시작: 10/31/2014 11:08:19 PM
      1>2 노드의 "D:\Works\AVPlayerForMFC\FFMpegMFC\FFMpegMFC.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\ffmpeg\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\FFMpegMFC.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AVPlayer.cpp FFMpegMFC.cpp FFMpegMFCDlg.cpp
-         FFMpegMFCDlg.cpp
-         FFMpegMFC.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\ffmpeg\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\FFMpegMFC.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AVPlayer.cpp
          AVPlayer.cpp
-         코드를 생성하고 있습니다...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Works\AVPlayerForMFC\FFMpegMFC\Debug\FFMpegMFC.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\ffmpeg\lib avcodec.lib avdevice.lib avformat.lib avutil.lib avfilter.lib swscale.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"D:\Works\AVPlayerForMFC\FFMpegMFC\Debug\FFMpegMFC.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Works\AVPlayerForMFC\FFMpegMFC\Debug\FFMpegMFC.lib" /MACHINE:X86 Debug\FFMpegMFC.res
          Debug\AudioDec.obj
@@ -19,4 +16,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:00.48
+경과 시간: 00:00:00.38

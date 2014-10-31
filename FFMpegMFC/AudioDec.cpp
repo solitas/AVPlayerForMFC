@@ -33,8 +33,6 @@ AudioDec::~AudioDec()
 	if (hWaveOut)
 		audio_block_free(waveBlocks);
 
-	packet_queue.~BlockingQueue();
-
 	DeleteCriticalSection(&waveCriticalSection);
 }
 
@@ -75,7 +73,7 @@ bool AudioDec::stream_open(int index, AVFormatContext* pFormatCtx)
 	pFrame = av_frame_alloc();
 	// 오디오 블록 할당
 	waveBlocks = audio_allocate_block(AUDIO_BLOCK_SIZE, AUDIO_BLOCK_COUNT);
-
+	nb_out_samples = 1024;
 	return true;
 }
 
@@ -87,7 +85,7 @@ void AudioDec::audio_decode(AVPacket *packet)
 	}
 
 	int got_picture;
-	out_buffer_sz = av_samples_get_buffer_size(NULL, av_get_channel_layout_nb_channels(AV_CH_LAYOUT_STEREO), 1024, AV_SAMPLE_FMT_S16, 0);
+	out_buffer_sz = av_samples_get_buffer_size(NULL, av_get_channel_layout_nb_channels(AV_CH_LAYOUT_STEREO), nb_out_samples, AV_SAMPLE_FMT_S16, 0);
 	uint8_t* buffer = (uint8_t*)av_malloc(out_buffer_sz);
 
 	/* 오디오 프레임 디코딩 */
@@ -103,6 +101,10 @@ void AudioDec::audio_decode(AVPacket *packet)
 
 		if (numSamplesOut > 0)
 		{
+			if (numSamplesOut != nb_out_samples)
+			{
+				nb_out_samples = numSamplesOut;
+			}
 			// 사이즈 다시 계산
 			out_buffer_sz = av_samples_get_buffer_size(NULL, av_get_channel_layout_nb_channels(AV_CH_LAYOUT_STEREO), numSamplesOut, AV_SAMPLE_FMT_S16, 0);
 			
@@ -239,7 +241,7 @@ void AudioDec::set_audio_spec(AVCodecContext* pCodecCtx)
 	case AV_SAMPLE_FMT_FLTP: wfx.wBitsPerSample = 16; break;
 	default: wfx.wBitsPerSample = 0; break;
 	}
-
+	wfx.wBitsPerSample = 16;
 	wfx.nChannels = FFMIN(2, pCodecCtx->channels);
 
 	/* the count in bytes of the size of extra information (after cbSize) */

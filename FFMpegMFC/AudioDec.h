@@ -29,7 +29,7 @@ private:
 
 	int					out_buffer_sz;	// buffer size
 	int					waveCurrentBlock; // current block index
-
+	int					nb_out_samples;
 private:
 	void		set_audio_spec(AVCodecContext* pCodecCtx);
 	WAVEHDR*	audio_allocate_block(int size, int count);

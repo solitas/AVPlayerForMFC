@@ -158,7 +158,7 @@ HCURSOR CFFMpegMFCDlg::OnQueryDragIcon()
 void CFFMpegMFCDlg::OnBnClickedButtonOpen()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	char szFilter[] = "Video File(*.avi, *.mp4)|*.avi;*mp4|All File(*.*)|*.*||";
+	char szFilter[] = "Video File(*.avi, *.mp4)|*.avi;*.mp4|Audio File(*.mp3,*.wav)|*.mp3;*.wav|All File(*.*)|*.*||";
 	CFileDialog dlg(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, szFilter);
 	
 	if (dlg.DoModal() == IDOK)
