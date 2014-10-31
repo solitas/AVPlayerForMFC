@@ -76,66 +76,42 @@ void COpenGLControl::DrawGLScene(void)
 	// DRAWING CODE
 	//***************************
 
-	glTranslatef(0.0f,0.0f,-5.0f);
+	// glTranslatef(0.0f,0.0f,-5.0f);
 	glRotatef(rotation, 0.0f, 1.0f, 0.0f);
-
-
-	//if (pData)
+	if (pData)
 	{
-// 		GLuint* texName = new GLuint[1];
-// 		texName[0] = 0;
-		//glBindTexture(GL_TEXTURE_2D, s_texture);
-// 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-// 		glGenTextures(1, texName);
-// 		glBindTexture(GL_TEXTURE_2D, texName[0]);
-// 
-// 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-// 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-// 
-// 		glTexImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, pData);
-// 
-// 		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-// 		glBindTexture(GL_TEXTURE_2D, texName[0]);
-// 		glBegin(GL_QUADS);
-// 		glTexCoord2d(0.0f, 0.0f); glVertex3f(-50.0, -50.0f, 50.0f);
-// 		glTexCoord2d(1.0f, 0.0f); glVertex3f(50.0, -50.0f, 50.0f);
-// 		glTexCoord2d(1.0f, 1.0f); glVertex3f(50.0, 50.0f, 50.0f);
-// 		glTexCoord2d(0.0f, 1.0f); glVertex3f(-50.0, 50.0f, 50.0f);
-// 		glEnd();
-// 		 	glBegin(GL_TRIANGLES);
-// 		 	glColor3f(1.0f, 0.0f, 0.0f);
-// 		 	glVertex3f(1.0f, -1.0f, 0.0f);
-// 		 	glColor3f(0.0f, 1.0f, 0.0f);
-// 		 	glVertex3f(-1.0f, -1.0f, 0.0f);
-// 		 	glColor3f(0.0f, 0.0f, 1.0f);
-// 		 	glVertex3f(0.0f, 1.0f, 0.0f);
-// 		 	glEnd();
-// 			glColor3f(1.0f, 0.0f, 0.0f);
-// 			glVertex3f(-1.1f, -1.1, 0.0f);
-// 			glVertex3f(1.1f, -1.1f, 0.0f);
-// 			glVertex3f(1.1f, 1.1f, 0.0f);
-// 			glVertex3f(-1.1f, 1.1f, 0.0f);
-// 			glEnd();
+		GLuint* texName = new GLuint[1];
+		texName[0] = 0;
+		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		glGenTextures(1, texName);
+		glBindTexture(GL_TEXTURE_2D, texName[0]);
+
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, pData);
+
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+		glBindTexture(GL_TEXTURE_2D, texName[0]);
+		glBegin(GL_QUADS);
+		glTexCoord2d(0.0f, 0.0f); glVertex3f(-50.0, -50.0f, 50.0f);
+		glTexCoord2d(1.0f, 0.0f); glVertex3f(50.0, -50.0f, 50.0f);
+		glTexCoord2d(1.0f, 1.0f); glVertex3f(50.0, 50.0f, 50.0f);
+		glTexCoord2d(0.0f, 1.0f); glVertex3f(-50.0, 50.0f, 50.0f);
+		glEnd();
+	}
+	else
+	{
+		glBegin(GL_TRIANGLES);
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glVertex3f(1.0f, -1.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glVertex3f(-1.0f, -1.0f, 0.0f);
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glVertex3f(0.0f, 1.0f, 0.0f);
+		glEnd();
 	}
 
-	
-
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(1.0f, -1.0f, 0.0f);
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(-1.0f, -1.0f, 0.0f);
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(0.0f, 1.0f, 0.0f);
-	glEnd();
-
-// 	glBegin(GL_QUADS);
-// 	glColor3f(1.0f,0.0f,0.0f);
-// 	glVertex3f(-1.1f,-1.1,0.0f);
-// 	glVertex3f(1.1f,-1.1f,0.0f);
-// 	glVertex3f(1.1f,1.1f,0.0f);
-// 	glVertex3f(-1.1f,1.1f,0.0f);
-// 	glEnd();
 
 	SwapBuffers(dc->m_hDC);
 }
