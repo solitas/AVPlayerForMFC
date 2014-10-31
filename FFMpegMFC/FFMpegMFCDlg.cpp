@@ -6,6 +6,7 @@
 #include "FFMpegMFC.h"
 #include "FFMpegMFCDlg.h"
 #include "afxdialogex.h"
+#include "AVPlayer.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -56,12 +57,14 @@ CFFMpegMFCDlg::CFFMpegMFCDlg(CWnd* pParent /*=NULL*/)
 void CFFMpegMFCDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_STATIC_PIC_CTRL, m_picCtrl);
 }
 
 BEGIN_MESSAGE_MAP(CFFMpegMFCDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON_OPEN, &CFFMpegMFCDlg::OnBnClickedButtonOpen)
 END_MESSAGE_MAP()
 
 
@@ -150,3 +153,19 @@ HCURSOR CFFMpegMFCDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CFFMpegMFCDlg::OnBnClickedButtonOpen()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	char szFilter[] = "Video File(*.avi, *.mp4)|*.avi;*mp4|All File(*.*)|*.*||";
+	CFileDialog dlg(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, szFilter);
+	
+	if (dlg.DoModal() == IDOK)
+	{
+		CString filePath = dlg.GetPathName();
+		const char* file_name = ((LPCSTR)filePath);
+		AVPlayer player;
+		player.play_video(file_name);
+	}
+}

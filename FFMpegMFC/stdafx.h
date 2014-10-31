@@ -34,10 +34,37 @@
 #include <afxcontrolbars.h>     // MFC의 리본 및 컨트롤 막대 지원
 
 
+#include <functional>
+#include <future>
+#include <iostream>
+#include <thread>
+#include <memory>
+#include <mutex>
+#include <condition_variable>
+#include <cstddef>
+#include <chrono>
+#include <queue>
 
 
+#include <mmsystem.h>
 
+#define inline _inline
 
+extern "C" {
+#include <libswscale/swscale.h>
+#include <libavformat/avformat.h>
+#include <libavcodec/avcodec.h>
+#include <libavutil/opt.h>
+#include <libavutil/time.h>
+#include <libswresample/swresample.h>
+}
+
+#pragma comment( lib, "Winmm.lib")
+#pragma comment( lib, "avcodec.lib")
+#pragma comment( lib, "avformat.lib")
+#pragma comment( lib, "avutil.lib")
+#pragma comment( lib, "swscale.lib")
+#pragma comment( lib, "swresample.lib")
 
 
 
