@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "AVPlayer.h"
-#include "AudioDec.h"
-#include "VideoDec.h"
+
 
 
 AVPlayer::AVPlayer()
@@ -16,12 +15,7 @@ AVPlayer::AVPlayer()
 
 AVPlayer::~AVPlayer()
 {
-	bRun = true;
-
-	if (pFormatCtx)
-	{
-		avformat_close_input(&pFormatCtx);
-	}
+	
 }
 
 bool AVPlayer::play_video(const char* resourceName)
@@ -52,8 +46,7 @@ bool AVPlayer::play_video(const char* resourceName)
 		}
 	}
 	
-	AudioDec aDecoder;
-	VideoDec vDecoder;
+
 
 	if (audio_stream_index >= 0)
 	{
@@ -96,6 +89,7 @@ void AVPlayer::decode_proc()
 			else if (stream_index == audio_stream_index)
 			{
 				/* process video packet */
+				aDecoder.audio_decode(&packet);
 			}
 			else
 			{
@@ -116,6 +110,10 @@ bool AVPlayer::stop_video()
 		avformat_close_input(&pFormatCtx);
 	}
 
+	if (decode_thread.joinable())
+	{
+		decode_thread.join();
+	}
 	return true;
 }
 

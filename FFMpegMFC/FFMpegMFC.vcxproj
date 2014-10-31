@@ -106,6 +106,7 @@
   <ItemGroup>
     <ClInclude Include="AudioDec.h" />
     <ClInclude Include="AVPlayer.h" />
+    <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="FFMpegMFC.h" />
     <ClInclude Include="FFMpegMFCDlg.h" />
     <ClInclude Include="Resource.h" />

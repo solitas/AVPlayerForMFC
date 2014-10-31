@@ -1,4 +1,7 @@
 #pragma once
+#include "AudioDec.h"
+#include "VideoDec.h"
+
 class AVPlayer
 {
 public:
@@ -10,6 +13,9 @@ public:
 
 	bool play_video(const char* resourceName);
 	bool stop_video();
+
+	AudioDec aDecoder;
+	VideoDec vDecoder;
 
 private:
 	bool bRun;
