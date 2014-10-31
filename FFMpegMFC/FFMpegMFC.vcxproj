@@ -54,12 +54,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\ffmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\ffmpeg\include;C:\SDL2-2.0.3\include;C:\opengl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\ffmpeg\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\ffmpeg\lib;C:\SDL2-2.0.3\lib\x86;C:\opengl;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>avcodec.lib;avdevice.lib;avformat.lib;avutil.lib;avfilter.lib;swscale.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
@@ -109,21 +109,27 @@
     <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="FFMpegMFC.h" />
     <ClInclude Include="FFMpegMFCDlg.h" />
+    <ClInclude Include="OpenGLControl.h" />
+    <ClInclude Include="OpenGLDevice.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="VideoDec.h" />
+    <ClInclude Include="VideoPicture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioDec.cpp" />
     <ClCompile Include="AVPlayer.cpp" />
     <ClCompile Include="FFMpegMFC.cpp" />
     <ClCompile Include="FFMpegMFCDlg.cpp" />
+    <ClCompile Include="OpenGLControl.cpp" />
+    <ClCompile Include="OpenGLDevice.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="VideoDec.cpp" />
+    <ClCompile Include="VideoPicture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FFMpegMFC.rc" />

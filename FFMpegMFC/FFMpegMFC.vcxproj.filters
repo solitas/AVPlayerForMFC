@@ -45,6 +45,15 @@
     <ClInclude Include="BlockingQueue.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="VideoPicture.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLDevice.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLControl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FFMpegMFC.cpp">
@@ -63,6 +72,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="AudioDec.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoPicture.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLDevice.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLControl.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

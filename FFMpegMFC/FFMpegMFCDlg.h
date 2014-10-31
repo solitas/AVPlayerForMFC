@@ -5,7 +5,8 @@
 #pragma once
 #include "afxwin.h"
 #include "AVPlayer.h"
-
+#include "OpenGLControl.h"
+static void * pVideoData;
 // CFFMpegMFCDlg 대화 상자
 class CFFMpegMFCDlg : public CDialogEx
 {
@@ -31,8 +32,21 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
-	CStatic m_picCtrl;
+
 	afx_msg void OnBnClickedButtonOpen();
 
 	AVPlayer m_player;
+
+	
+
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+
+	
+
+	BITMAPINFO* bmi;
+	CDC * pDC;
+	CRect rect;
+
+	COpenGLControl openGLControl;
+
 };

@@ -57,7 +57,7 @@ CFFMpegMFCDlg::CFFMpegMFCDlg(CWnd* pParent /*=NULL*/)
 void CFFMpegMFCDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_STATIC_PIC_CTRL, m_picCtrl);
+	
 }
 
 BEGIN_MESSAGE_MAP(CFFMpegMFCDlg, CDialogEx)
@@ -65,6 +65,7 @@ BEGIN_MESSAGE_MAP(CFFMpegMFCDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_OPEN, &CFFMpegMFCDlg::OnBnClickedButtonOpen)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -100,7 +101,11 @@ BOOL CFFMpegMFCDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-
+	CRect rect;
+	GetDlgItem(IDC_OPENGL_WINDOW)->GetWindowRect(rect);
+	ScreenToClient(rect);
+	//GetWindowRect(rect);
+	openGLControl.Create(rect, this);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -142,6 +147,30 @@ void CFFMpegMFCDlg::OnPaint()
 	}
 	else
 	{
+		if (pVideoData != NULL)
+		{
+// 			CDC* pDC;
+// 			int width = m_player.vDecoder.width;
+// 			int height = m_player.vDecoder.height;
+// 			if (bmi == NULL)
+// 			{
+// 				int width = m_player.vDecoder.width;
+// 				int height = m_player.vDecoder.height;
+// 				bmi = (BITMAPINFO*)new char[sizeof(BITMAPINFO)+sizeof(RGBQUAD)* 256];
+// 				bmi->bmiHeader.biBitCount = 24;
+// 				bmi->bmiHeader.biCompression = BI_RGB;
+// 				bmi->bmiHeader.biHeight = -height;
+// 				bmi->bmiHeader.biWidth = width;
+// 				bmi->bmiHeader.biPlanes = 1;
+// 				bmi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+// 				bmi->bmiHeader.biSizeImage = height * width * 3;
+// 			}
+// 			pDC = GetDlgItem(IDC_STATIC_PIC_CTRL)->GetDC();
+// 			pDC->SetStretchBltMode(COLORONCOLOR);
+// 			m_picCtrl.GetClientRect(&rect);
+// 			StretchDIBits(pDC->GetSafeHdc(), 0, 0, rect.right, rect.bottom, 0, 0, width, height, pVideoData, bmi, DIB_RGB_COLORS, SRCCOPY);
+// 			ReleaseDC(pDC);
+		}
 		CDialogEx::OnPaint();
 	}
 }
@@ -165,6 +194,26 @@ void CFFMpegMFCDlg::OnBnClickedButtonOpen()
 	{
 		CString filePath = dlg.GetPathName();
 		const char* file_name = ((LPCSTR)filePath);
-		m_player.play_video(file_name);
+		
+		if (m_player.play_video(file_name))
+		{
+			openGLControl.width = m_player.vDecoder.width;
+			openGLControl.height = m_player.vDecoder.height;
+			m_player.vDecoder.handler = openGLControl.decode_callback;
+		}
+
+		SetTimer(0, 1, NULL);
+		
 	}
+}
+
+
+void CFFMpegMFCDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (pVideoData != NULL)
+	{
+		Invalidate(FALSE);
+	}
+	CDialogEx::OnTimer(nIDEvent);
 }

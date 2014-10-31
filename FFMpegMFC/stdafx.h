@@ -57,6 +57,11 @@ extern "C" {
 #include <libavutil/time.h>
 #include <libswresample/swresample.h>
 }
+#include <SDL.h>
+#include <SDL_thread.h>
+#include <gl/gl.h>
+#include <gl/glu.h>
+#include <glut.h>
 
 #pragma comment( lib, "Winmm.lib")
 #pragma comment( lib, "avcodec.lib")
@@ -64,7 +69,10 @@ extern "C" {
 #pragma comment( lib, "avutil.lib")
 #pragma comment( lib, "swscale.lib")
 #pragma comment( lib, "swresample.lib")
-
+#pragma comment( lib, "SDL2.lib")
+#pragma comment( lib, "glut32.lib")
+#pragma comment( lib, "OPENGL32.lib")
+#pragma comment( lib, "GLU32.lib")
 
 #include "BlockingQueue.h"
 
@@ -77,3 +85,6 @@ extern "C" {
 #pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #endif
 #endif
+
+typedef void(*Callback)(void * obj, int delay);
+typedef void(*DisplayCallback)(void* obj, void** buf);
