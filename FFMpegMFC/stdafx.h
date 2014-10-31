@@ -33,9 +33,12 @@
 
 #include <afxcontrolbars.h>     // MFC의 리본 및 컨트롤 막대 지원
 
+#define inline _inline
+
 
 #include <functional>
 #include <future>
+#include <mmsystem.h>
 #include <iostream>
 #include <thread>
 #include <memory>
@@ -48,7 +51,6 @@
 
 #include <mmsystem.h>
 
-#define inline _inline
 
 extern "C" {
 #include <libswscale/swscale.h>
@@ -77,5 +79,3 @@ extern "C" {
 #pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #endif
 #endif
-
-
