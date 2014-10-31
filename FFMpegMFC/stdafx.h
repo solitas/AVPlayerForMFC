@@ -33,9 +33,6 @@
 
 #include <afxcontrolbars.h>     // MFC의 리본 및 컨트롤 막대 지원
 
-#define inline _inline
-
-
 #include <functional>
 #include <future>
 #include <mmsystem.h>
@@ -67,8 +64,6 @@ extern "C" {
 #pragma comment( lib, "avutil.lib")
 #pragma comment( lib, "swscale.lib")
 #pragma comment( lib, "swresample.lib")
-
-
 
 #ifdef _UNICODE
 #if defined _M_IX86

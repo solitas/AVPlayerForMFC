@@ -9,7 +9,6 @@ AVPlayer::AVPlayer()
 , video_stream_index(0)
 , audio_stream_index(0)
 , bRun(false)
-, decode_thread(NULL)
 {
 }
 
@@ -44,7 +43,7 @@ bool AVPlayer::play_video(const char* resourceName)
 		return false;
 	}
 
-	for (int i = 0; i < pFormatCtx->nb_streams; i++)
+	for (int i = 0; i < (int)pFormatCtx->nb_streams; i++)
 	{
 		if (pFormatCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
 		{
